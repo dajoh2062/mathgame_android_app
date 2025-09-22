@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">dajoh2062_oblig1</string>
+    <string name="about">Om</string>
+    <string name="preferences">Preferanser</string>
+    <string name="start">Start</string>
+    <string name="startHeader">Mattespill</string>
+</resources>

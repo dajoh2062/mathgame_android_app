@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">dajoh2062_oblig1</string>
+    <string name="about">About</string>
+    <string name="preferences">Preferences</string>
+    <string name="start">Start</string>
+    <string name="startHeader">Math-game</string>
+</resources>
