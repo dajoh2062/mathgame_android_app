@@ -11,9 +11,9 @@ import androidx.compose.ui.unit.sp
 import com.example.dajoh2062_oblig1.R
 
 @Composable
-fun mainHeader(modifier: Modifier = Modifier){
+fun PreferencesHeader(modifier: Modifier = Modifier){
     Text(
-        text = stringResource(id = R.string.startHeader),
+        text = stringResource(id = R.string.preferences),
         fontSize = 32.sp,
         fontWeight = FontWeight.Bold,
         modifier = modifier.padding(bottom = 16.dp)

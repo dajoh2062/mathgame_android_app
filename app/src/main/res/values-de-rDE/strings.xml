@@ -4,6 +4,9 @@
     <string name="about">Um</string>
     <string name="preferences">Präferenzen</string>
     <string name="start">Start</string>
-    <string name="startHeader">Mathe-Spiel</string>
+    <string name="start_header">Mathe-Spiel</string>
     <string name="prefs_count_label">Anzahl Aufgaben pro Runde:</string>
+    <string name="about_header">Über die Anwendung</string>
+    <string name="about_text">bla bla bla</string>
+    <string name="go_back_start">← Zurück nach oben</string>
 </resources>

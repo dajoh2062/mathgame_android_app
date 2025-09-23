@@ -4,6 +4,9 @@
     <string name="about">About</string>
     <string name="preferences">Preferences</string>
     <string name="start">Start</string>
-    <string name="startHeader">Math-game</string>
+    <string name="start_header">Math-game</string>
     <string name="prefs_count_label">Number of tasks per round:</string>
+    <string name="about_header">About the application</string>
+    <string name="about_text">Bla bla bla</string>
+    <string name="go_back_start">←Back to start</string>
 </resources>

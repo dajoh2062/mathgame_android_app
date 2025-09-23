@@ -3,6 +3,9 @@
     <string name="about">Om</string>
     <string name="preferences">Preferanser</string>
     <string name="start">Start</string>
-    <string name="startHeader">Mattespill</string>
+    <string name="start_header">Mattespill</string>
     <string name="prefs_count_label">Antall oppgaver per runde:</string>
+    <string name="about_header">Om applikasjonen</string>
+    <string name="about_text">Bla bla bla</string>
+    <string name="go_back_start">←Tilbake til start</string>
 </resources>

@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.dajoh2062_oblig1.ui.screens.AboutScreen
 import com.example.dajoh2062_oblig1.ui.screens.PreferencesScreen
 
 import com.example.dajoh2062_oblig1.ui.screens.StartScreen
@@ -26,5 +27,8 @@ fun NavigationGraph(navController: NavHostController) {
         }
         composable("preferences") {
             PreferencesScreen(navController = navController) }
+        composable("about") {
+            AboutScreen(navController = navController)
+        }
     }
 }
