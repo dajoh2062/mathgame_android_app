@@ -35,6 +35,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.dajoh2062_oblig1.ui.components.AboutButton
 import com.example.dajoh2062_oblig1.ui.components.PreferencesButton
 import com.example.dajoh2062_oblig1.ui.components.StartButton
+import com.example.dajoh2062_oblig1.ui.components.mainHeader
 import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
@@ -45,12 +46,7 @@ fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = stringResource(id = R.string.startHeader),
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = modifier.padding(bottom = 16.dp)
-            )
+            mainHeader()
             Spacer(modifier = Modifier.height(16.dp))
             StartButton()
             Spacer(modifier = Modifier.height(16.dp))
