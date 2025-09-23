@@ -5,4 +5,5 @@
     <string name="preferences">Präferenzen</string>
     <string name="start">Start</string>
     <string name="startHeader">Mathe-Spiel</string>
+    <string name="prefs_count_label">Anzahl Aufgaben pro Runde:</string>
 </resources>

@@ -5,4 +5,5 @@
     <string name="preferences">Preferences</string>
     <string name="start">Start</string>
     <string name="startHeader">Math-game</string>
+    <string name="prefs_count_label">Number of tasks per round:</string>
 </resources>
