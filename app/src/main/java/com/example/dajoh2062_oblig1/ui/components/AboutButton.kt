@@ -14,7 +14,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun AboutButton(modifier: Modifier = Modifier, navController: NavController) {
+fun AboutButton(
+    navController: NavController,
+    modifier: Modifier
+) {
     OutlinedButton(
         onClick = {navController.navigate("about")},
         modifier = modifier
@@ -29,5 +32,3 @@ fun AboutButton(modifier: Modifier = Modifier, navController: NavController) {
         )
     }
 }
-
-
