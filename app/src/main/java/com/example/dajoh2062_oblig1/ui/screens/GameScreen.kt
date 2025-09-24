@@ -16,7 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.dajoh2062_oblig1.viewmodel.GameUiState
 import com.example.dajoh2062_oblig1.viewmodel.GameViewModel
 import com.example.dajoh2062_oblig1.ui.components.NumberPad
 
@@ -26,7 +25,7 @@ fun GameScreen(
     vm: GameViewModel = viewModel(),
     onExitToMenu: () -> Unit = {}
 ) {
-    val uiState = vm.ui.collectAsState(initial = GameUiState()).value
+    val uiState = vm.ui.collectAsState(initial = GameViewModel.UiState()).value
 
     GameScreenContent(
         ui = uiState,
@@ -55,7 +54,7 @@ fun GameScreen(
 
 @Composable
 private fun GameScreenContent(
-    ui: GameUiState,
+    ui: GameViewModel.UiState,
     onDigit: (Int) -> Unit,
     onSubmit: () -> Unit,
     onClear: () -> Unit,
@@ -164,7 +163,7 @@ private fun GameScreenContent(
 fun GameScreenPreview() {
     Dajoh2062_oblig1Theme {
         GameScreenContent(
-            ui = GameUiState(
+            ui = GameViewModel.UiState(
                 questionText = "Hva er 7 × 6?",
                 questionNumber = 1,
                 totalQuestions = 5,

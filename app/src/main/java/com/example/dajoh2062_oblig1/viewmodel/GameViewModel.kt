@@ -3,49 +3,41 @@ package com.example.dajoh2062_oblig1.viewmodel
 import com.example.dajoh2062_oblig1.R
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
-
-data class GameUiState(
-    val questionText: String = "",
-    val questionNumber: Int = 0,
-    val totalQuestions: Int = 0,
-    val score: Int = 0,
-    val feedback: String? = null,
-    val answered: Boolean = false,
-    val finished: Boolean = false,
-    val showQuitDialog: Boolean = false,
-    val currentInput: String = ""
-)
 
 class GameViewModel(app: Application) : AndroidViewModel(app) {
 
-    private val prefs: SharedPreferences =
-        app.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    // Moved the state inside the ViewModel
+    data class UiState(
+        val questionText: String = "",
+        val questionNumber: Int = 0,
+        val totalQuestions: Int = 0,
+        val score: Int = 0,
+        val feedback: String? = null,
+        val answered: Boolean = false,
+        val finished: Boolean = false,
+        val showQuitDialog: Boolean = false,
+        val currentInput: String = ""
+    )
 
-    private val questions: Array<String> =
-        app.resources.getStringArray(R.array.math_questions)
-
-    private val answers: IntArray =
-        app.resources.getIntArray(R.array.math_answers)
+    private val prefs = app.getSharedPreferences("preferences", Context.MODE_PRIVATE)
+    private val questions: Array<String> = app.resources.getStringArray(R.array.math_questions)
+    private val answers: IntArray = app.resources.getIntArray(R.array.math_answers)
 
     private var order: List<Int> = emptyList()
     private var idx = 0
     private var _score = 0
-
     private var input: String = ""
 
-    private val _ui = MutableStateFlow(GameUiState())
-    val ui: StateFlow<GameUiState> = _ui
+    private val _ui = MutableStateFlow(UiState())
+    val ui: StateFlow<UiState> = _ui
 
     init { startNewGame() }
 
     fun startNewGame() {
-        val wanted = prefs.getInt("pref_game_len", 5).coerceIn(1, questions.size)
+        val wanted = prefs.getInt("numberOfTasks", 5).coerceIn(1, questions.size)
         order = (questions.indices).shuffled().take(wanted)
         idx = 0
         _score = 0
@@ -56,7 +48,7 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
     private fun pushState(feedback: String?, answered: Boolean) {
         val finished = idx >= order.size
         if (finished) {
-            _ui.value = GameUiState(
+            _ui.value = UiState(
                 questionText = "",
                 questionNumber = order.size,
                 totalQuestions = order.size,
@@ -71,7 +63,7 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         }
 
         val qIndex = order[idx]
-        _ui.value = GameUiState(
+        _ui.value = UiState(
             questionText = questions[qIndex],
             questionNumber = idx + 1,
             totalQuestions = order.size,
@@ -86,7 +78,6 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
 
     fun onDigitPressed(digit: Int) {
         if (_ui.value.finished || _ui.value.answered) return
-
         if (input.length >= 8) return
         input += digit.toString()
         _ui.value = _ui.value.copy(currentInput = input)
@@ -121,6 +112,4 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
 
     fun askQuit() { _ui.value = _ui.value.copy(showQuitDialog = true) }
     fun dismissQuit() { _ui.value = _ui.value.copy(showQuitDialog = false) }
-
-
 }

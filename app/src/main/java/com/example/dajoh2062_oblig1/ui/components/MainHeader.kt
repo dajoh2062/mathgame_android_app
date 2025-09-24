@@ -13,7 +13,7 @@ import com.example.dajoh2062_oblig1.R
 @Composable
 fun MainHeader(modifier: Modifier = Modifier){
     Text(
-        text = stringResource(id = R.string.about_header),
+        text = stringResource(id = R.string.start_header),
         fontSize = 32.sp,
         fontWeight = FontWeight.Bold,
         modifier = modifier.padding(bottom = 16.dp)
