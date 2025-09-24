@@ -30,7 +30,7 @@ fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
         ) {
             MainHeader()
             Spacer(modifier = Modifier.height(16.dp))
-            StartButton()
+            StartButton(navController = navController)
             Spacer(modifier = Modifier.height(16.dp))
             PreferencesButton(navController = navController, modifier = Modifier)
             Spacer(modifier = Modifier.height(16.dp))
