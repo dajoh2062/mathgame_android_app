@@ -9,7 +9,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -19,7 +18,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.dajoh2062_oblig1.viewmodel.GameUiState
 import com.example.dajoh2062_oblig1.viewmodel.GameViewModel
-import com.example.dajoh2062_oblig1.ui.components.NumBtn
 import com.example.dajoh2062_oblig1.ui.components.NumberPad
 
 @Composable
@@ -27,19 +25,31 @@ fun GameScreen(
     navController: NavController,
     vm: GameViewModel = viewModel(),
     onExitToMenu: () -> Unit = {}
-
 ) {
     val uiState = vm.ui.collectAsState(initial = GameUiState()).value
 
     GameScreenContent(
         ui = uiState,
         onDigit = vm::onDigitPressed,
+        onSubmit = vm::onSubmitAnswer,
+        onClear = vm::clearInput,
         onNext = vm::next,
         onAskQuit = vm::askQuit,
         onDismissQuit = vm::dismissQuit,
-        onConfirmQuit = { vm.confirmQuit(onExitToMenu) },
+        onConfirmQuit = {
+            vm.dismissQuit()
+            navController.navigate("start") {
+                popUpTo(0)
+                launchSingleTop = true
+            }
+        },
         onStartNew = vm::startNewGame,
-        onExitToMenu = onExitToMenu
+        onExitToMenu = {
+            navController.navigate("start") {
+                popUpTo(0)
+                launchSingleTop = true
+            }
+        }
     )
 }
 
@@ -47,6 +57,8 @@ fun GameScreen(
 private fun GameScreenContent(
     ui: GameUiState,
     onDigit: (Int) -> Unit,
+    onSubmit: () -> Unit,
+    onClear: () -> Unit,
     onNext: () -> Unit,
     onAskQuit: () -> Unit,
     onDismissQuit: () -> Unit,
@@ -54,7 +66,7 @@ private fun GameScreenContent(
     onStartNew: () -> Unit,
     onExitToMenu: () -> Unit
 ) {
-    BackHandler { onAskQuit() }
+    BackHandler (enabled = !ui.finished && !ui.showQuitDialog) { onAskQuit() }
 
     if (ui.showQuitDialog) {
         AlertDialog(
@@ -106,7 +118,32 @@ private fun GameScreenContent(
 
             Spacer(Modifier.height(24.dp))
 
+
             NumberPad(enabled = !ui.answered, onClick = onDigit)
+
+            Spacer(Modifier.height(12.dp))
+
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Ditt svar: ${ui.currentInput}",
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.weight(1f)
+                )
+                OutlinedButton(
+                    onClick = onClear,
+                    enabled = !ui.answered && ui.currentInput.isNotEmpty()
+                ) { Text("Slett") }
+                Spacer(Modifier.width(8.dp))
+                Button(
+                    onClick = onSubmit,
+                    enabled = !ui.answered && ui.currentInput.isNotEmpty()
+                ) { Text("Sjekk svar") }
+            }
 
             Spacer(Modifier.height(16.dp))
 
@@ -122,11 +159,6 @@ private fun GameScreenContent(
     }
 }
 
-
-
-
-
-
 @Preview(showBackground = true)
 @Composable
 fun GameScreenPreview() {
@@ -140,9 +172,12 @@ fun GameScreenPreview() {
                 feedback = null,
                 answered = false,
                 finished = false,
-                showQuitDialog = false
+                showQuitDialog = false,
+                currentInput = "42"
             ),
             onDigit = {},
+            onSubmit = {},
+            onClear = {},
             onNext = {},
             onAskQuit = {},
             onDismissQuit = {},

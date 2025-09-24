@@ -18,7 +18,8 @@ data class GameUiState(
     val feedback: String? = null,
     val answered: Boolean = false,
     val finished: Boolean = false,
-    val showQuitDialog: Boolean = false
+    val showQuitDialog: Boolean = false,
+    val currentInput: String = ""
 )
 
 class GameViewModel(app: Application) : AndroidViewModel(app) {
@@ -36,6 +37,8 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
     private var idx = 0
     private var _score = 0
 
+    private var input: String = ""
+
     private val _ui = MutableStateFlow(GameUiState())
     val ui: StateFlow<GameUiState> = _ui
 
@@ -46,6 +49,7 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         order = (questions.indices).shuffled().take(wanted)
         idx = 0
         _score = 0
+        input = ""
         pushState(feedback = null, answered = false)
     }
 
@@ -60,7 +64,8 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
                 feedback = "Ferdig! Du fikk $_score av ${order.size}.",
                 answered = true,
                 finished = true,
-                showQuitDialog = false
+                showQuitDialog = false,
+                currentInput = input
             )
             return
         }
@@ -74,15 +79,31 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
             feedback = feedback,
             answered = answered,
             finished = false,
-            showQuitDialog = false
+            showQuitDialog = false,
+            currentInput = input
         )
     }
 
     fun onDigitPressed(digit: Int) {
         if (_ui.value.finished || _ui.value.answered) return
+
+        if (input.length >= 8) return
+        input += digit.toString()
+        _ui.value = _ui.value.copy(currentInput = input)
+    }
+
+    fun clearInput() {
+        if (_ui.value.finished || _ui.value.answered) return
+        input = ""
+        _ui.value = _ui.value.copy(currentInput = input)
+    }
+
+    fun onSubmitAnswer() {
+        if (_ui.value.finished || _ui.value.answered) return
+        val given = input.toIntOrNull()
         val correct = answers[order[idx]]
         val msg =
-            if (digit == correct) {
+            if (given != null && given == correct) {
                 _score += 1
                 "Riktig! Godt jobbet."
             } else {
@@ -94,15 +115,12 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
     fun next() {
         if (_ui.value.finished) return
         idx += 1
+        input = ""
         pushState(feedback = null, answered = false)
     }
 
     fun askQuit() { _ui.value = _ui.value.copy(showQuitDialog = true) }
     fun dismissQuit() { _ui.value = _ui.value.copy(showQuitDialog = false) }
 
-    fun confirmQuit(onQuit: () -> Unit) {
-        viewModelScope.launch {
-            onQuit()
-        }
-    }
+
 }
