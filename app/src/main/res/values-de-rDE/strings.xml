@@ -7,7 +7,13 @@
     <string name="start_header">Mathe-Spiel</string>
     <string name="prefs_count_label">Anzahl Aufgaben pro Runde:</string>
     <string name="about_header">Über die Anwendung</string>
-    <string name="about_text">bla bla bla</string>
+    <string name="about_text">Mit dieser App können Sie ein Mathespiel spielen, derzeit nur Addition.
+        Der Nutzer kann zwischen 5, 10 und 15 Aufgaben pro Runde wählen, die in den Einstellungen
+        festgelegt werden. Die App ist so übersichtlich und benutzerfreundlich wie möglich gestaltet.
+        Daher ist der Text in der App groß und wird nur dort verwendet, wo er benötigt wird. Das Format
+        ist zudem leicht verständlich und bietet gute Kontraste, sodass die App so angenehm und
+        benutzerfreundlich wie möglich ist. Die App unterstützt die Sprachen Norwegisch,
+        Deutsch und Englisch.</string>
     <string name="go_back_start">← Zurück nach oben</string>
 
     <string name="quit_dialog_title">Spiel beenden?</string>

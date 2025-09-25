@@ -7,7 +7,12 @@
     <string name="start_header">Math-game</string>
     <string name="prefs_count_label">Number of tasks per round:</string>
     <string name="about_header">About the application</string>
-    <string name="about_text">Bla bla bla</string>
+    <string name="about_text">This is an application that allows you to play a math game, currently
+    only addition. The user can choose between 5, 10 and 15 tasks per round, which is selected in the preferences
+    The app is designed to be as clear as possible and user-friendly. Therefore, the text in the application
+    is large in size, and is only used where necessary. The format is also easy to understand, and with
+    good contrasts so that the application feels as nice and user-friendly as possible. The application supports the languages
+    Norwegian, German and English.</string>
     <string name="go_back_start">←Back to start</string>
 
     <string name="quit_dialog_title">Quit game?</string>

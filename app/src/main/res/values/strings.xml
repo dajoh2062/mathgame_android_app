@@ -6,7 +6,12 @@
     <string name="start_header">Mattespill</string>
     <string name="prefs_count_label">Antall oppgaver per runde:</string>
     <string name="about_header">Om applikasjonen</string>
-    <string name="about_text">Bla bla bla</string>
+    <string name="about_text">Dette er en applikasjon som lar deg spille et mattespill, nåværende
+    bare addisjon. Brukeren kan velge mellom 5, 10 og 15 oppgaver per runde, som velges i preferansene
+    Appen er laget for å være så oversiktlig som mulig og brukervennlig. Derfor er teksten i applikasjonen
+    stor i størrelsen, og brukes bare der det er nødvendig. Formatet er også lett oversiktlig, og med
+    gode kontraster slik at applikasjonen oppleves så fin og brukervennlig som mulig. Applikasjon støtter språkene
+    Norsk bokmål, Tysk og Engelsk. </string>
     <string name="go_back_start">←Tilbake til start</string>
 
     <string name="quit_dialog_title">Avslutt spillet?</string>
