@@ -10,6 +10,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dajoh2062_oblig1.R
 
+//Hoved-overskrift for startsiden. Stor skrift og bold gjør det lett å lese. Legger også til avstand
+// under overskriften mellom andre komponenter.
 @Composable
 fun MainHeader(modifier: Modifier = Modifier){
 

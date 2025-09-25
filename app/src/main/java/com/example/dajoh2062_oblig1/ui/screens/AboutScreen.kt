@@ -19,6 +19,10 @@ import com.example.dajoh2062_oblig1.ui.components.AboutText
 import com.example.dajoh2062_oblig1.ui.components.BackToStartButton
 import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
+
+// Enkelt skjermbildet hvor jeg som sagt bare forklarer enkelt om applikasjonen og
+// hvordan den brukes. Kan bare navigeres til fra startskjermen.
+// Består av tre egne komponenter, overskrift, tekst og tilbake knapp.
 @Composable
 fun AboutScreen(
     navController: NavController,
@@ -32,6 +36,7 @@ fun AboutScreen(
             modifier = Modifier.padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            // Legger til noen mellomrom og de komponentene som sagt.
             Spacer(modifier = Modifier.height(16.dp))
             AboutHeader()
             AboutText()
@@ -42,6 +47,8 @@ fun AboutScreen(
     }
 }
 
+
+// Preview composable bare for å lettere utvikle skjermen.
 @Preview(showBackground = true)
 @Composable
 fun AboutScreenPreview(){

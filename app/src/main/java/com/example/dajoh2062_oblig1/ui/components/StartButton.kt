@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.dajoh2062_oblig1.R
 
+// Startknapp som starter en ny instans av et spill. Knappen er stor og bold. Knappen samsvarer
+// med formatet til de andre knappene på samme side for å gjøre den enkel å lese.
 @Composable
 fun StartButton(navController: NavController, modifier: Modifier = Modifier) {
     Button(

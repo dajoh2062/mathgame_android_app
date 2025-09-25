@@ -206,6 +206,7 @@ private fun GameScreenContent(
     }
 }
 
+// Preview composable bare for å lettere utvikle skjermen.
 @Preview(showBackground = true)
 @Composable
 fun GameScreenPreview() {

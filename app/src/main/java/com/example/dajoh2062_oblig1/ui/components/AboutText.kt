@@ -9,6 +9,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dajoh2062_oblig1.R
 
+// Bruker stringresource til å hente teksten fra strings.xml. Komponenten er bare en enkel tekst
+// som beskriver applikasjonen grovt, og er en slags brukerveiledning.
 @Composable
 fun AboutText(modifier: Modifier = Modifier){
     Text(

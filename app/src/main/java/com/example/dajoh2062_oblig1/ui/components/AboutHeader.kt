@@ -10,9 +10,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dajoh2062_oblig1.R
 
+// Enkel header for "about" skjermen.
+// Stor fontsize og bold for god oversikt og lesbarhet.
+
 @Composable
 fun AboutHeader(modifier: Modifier = Modifier) {
-
     Text(
         text = stringResource(id = R.string.about_header),
         fontSize = 32.sp,
