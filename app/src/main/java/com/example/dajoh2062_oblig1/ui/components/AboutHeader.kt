@@ -9,16 +9,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dajoh2062_oblig1.R
-import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
 fun AboutHeader(modifier: Modifier = Modifier) {
-    Dajoh2062_oblig1Theme {
-        Text(
-            text = stringResource(id = R.string.about_header),
-            fontSize = 32.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = modifier.padding(bottom = 16.dp)
-        )
-    }
+
+    Text(
+        text = stringResource(id = R.string.about_header),
+        fontSize = 32.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = modifier.padding(bottom = 16.dp)
+    )
 }

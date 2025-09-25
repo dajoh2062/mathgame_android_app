@@ -68,7 +68,9 @@ private fun GameScreenContent(
     onStartNew: () -> Unit,
     onExitToMenu: () -> Unit
 ) {
-    Dajoh2062_oblig1Theme {
+    Surface(
+        color = MaterialTheme.colorScheme.background
+    ) {
         BackHandler(enabled = !ui.finished && !ui.showQuitDialog) { onAskQuit() }
 
         if (ui.showQuitDialog) {

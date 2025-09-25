@@ -31,7 +31,6 @@ import com.example.dajoh2062_oblig1.ui.components.SaveButton
 import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 import com.example.dajoh2062_oblig1.viewmodel.PreferencesViewModel
 
-// ui/screens/PreferencesScreen.kt
 @Composable
 fun PreferencesScreen(navController: NavController, modifier: Modifier = Modifier) {
     val vm: PreferencesViewModel = viewModel()
@@ -57,29 +56,32 @@ private fun PreferencesScreenContent(
     onSave: () -> Unit,
     onCancel: () -> Unit
 ) {
-    Dajoh2062_oblig1Theme {
-        Surface(modifier, color = MaterialTheme.colorScheme.background) {
-            Column(
-                modifier = Modifier.fillMaxSize().padding(24.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                Spacer(modifier = Modifier.height(16.dp))
-                PreferencesHeader()
-                Text(text = stringResource(id = R.string.prefs_count_label))
-                RadioListPreferences(
-                    list = options,
-                    selectedOption = selectedOption,
-                    onSelectedChange = onSelect
-                )
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    SaveButton(onClick = onSave)
-                    Spacer(Modifier.width(12.dp))
-                    CancelButton(onClick = onCancel)
-                }
+
+    Surface(
+        modifier = modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(24.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Spacer(modifier = Modifier.height(16.dp))
+            PreferencesHeader()
+            Text(text = stringResource(id = R.string.prefs_count_label))
+            RadioListPreferences(
+                list = options,
+                selectedOption = selectedOption,
+                onSelectedChange = onSelect
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                SaveButton(onClick = onSave)
+                Spacer(Modifier.width(12.dp))
+                CancelButton(onClick = onCancel)
             }
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun PreferencesScreenPreview() {

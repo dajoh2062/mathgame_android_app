@@ -6,7 +6,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
 fun CancelButton(
@@ -15,13 +14,12 @@ fun CancelButton(
     text: String = "Cancel"
 
 ) {
-    Dajoh2062_oblig1Theme {
-        OutlinedButton(
-            onClick = onClick,
-            modifier = modifier
-                .padding(8.dp)
-        ) {
-            Text(text)
-        }
+
+    OutlinedButton(
+        onClick = onClick,
+        modifier = modifier
+            .padding(8.dp)
+    ) {
+        Text(text)
     }
 }

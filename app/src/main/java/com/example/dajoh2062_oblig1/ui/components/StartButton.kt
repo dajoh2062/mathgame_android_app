@@ -12,23 +12,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.dajoh2062_oblig1.R
-import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
 fun StartButton(navController: NavController, modifier: Modifier = Modifier) {
-    Dajoh2062_oblig1Theme {
-        Button(
-            onClick = {navController.navigate("game") },
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+    Button(
+        onClick = {navController.navigate("game") },
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
 
-            ) {
-            Text(
-                text = stringResource(id = R.string.start),
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
+        ) {
+        Text(
+            text = stringResource(id = R.string.start),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
+

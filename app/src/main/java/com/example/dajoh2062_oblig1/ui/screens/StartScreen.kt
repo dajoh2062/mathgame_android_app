@@ -22,8 +22,10 @@ import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
 fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
-    Dajoh2062_oblig1Theme {
-        Surface(modifier, color = MaterialTheme.colorScheme.background) {
+    Surface(
+        modifier = modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
             Column(
                 modifier = modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
@@ -40,7 +42,7 @@ fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
             }
         }
     }
-}
+
 @Preview(showBackground = true)
 @Composable
 fun StartScreenPreview(){
