@@ -12,21 +12,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.dajoh2062_oblig1.R
+import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
 fun PreferencesButton(navController: NavController, modifier: Modifier = Modifier) {
-    Button(
-        onClick = { navController.navigate("preferences") },
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-    ) {
-        Text(
-            text = stringResource(id = R.string.preferences),
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
-        )
+    Dajoh2062_oblig1Theme {
+        Button(
+            onClick = { navController.navigate("preferences") },
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            Text(
+                text = stringResource(id = R.string.preferences),
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
-
 

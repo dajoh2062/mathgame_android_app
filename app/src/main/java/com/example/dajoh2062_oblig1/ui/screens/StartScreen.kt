@@ -22,23 +22,25 @@ import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
 fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
-    Surface(modifier, color = MaterialTheme.colorScheme.background) {
-        Column(
-            modifier = modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            MainHeader()
-            Spacer(modifier = Modifier.height(16.dp))
-            StartButton(navController = navController)
-            Spacer(modifier = Modifier.height(16.dp))
-            PreferencesButton(navController = navController, modifier = Modifier)
-            Spacer(modifier = Modifier.height(16.dp))
-            AboutButton(navController = navController, modifier = Modifier)
+    Dajoh2062_oblig1Theme {
+        Surface(modifier, color = MaterialTheme.colorScheme.background) {
+            Column(
+                modifier = modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.height(16.dp))
+                MainHeader()
+                Spacer(modifier = Modifier.height(16.dp))
+                StartButton(navController = navController)
+                Spacer(modifier = Modifier.height(16.dp))
+                PreferencesButton(navController = navController)
+                Spacer(modifier = Modifier.height(16.dp))
+                AboutButton(navController = navController)
+            }
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun StartScreenPreview(){

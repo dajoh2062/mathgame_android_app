@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">dajoh2062_oblig1</string>
+    <string name="app_name">Mattespill</string>
     <string name="about">Om</string>
     <string name="preferences">Preferanser</string>
     <string name="start">Start</string>
@@ -8,4 +8,22 @@
     <string name="about_header">Om applikasjonen</string>
     <string name="about_text">Bla bla bla</string>
     <string name="go_back_start">←Tilbake til start</string>
+
+    <string name="quit_dialog_title">Avslutt spillet?</string>
+    <string name="quit_dialog_text">Hvis du avslutter nå, mister du fremgangen i denne runden.</string>
+    <string name="quit">Avslutt</string>
+    <string name="continue_playing">Fortsett</string>
+    <string name="play_again">Spill igjen</string>
+    <string name="to_menu">Til meny</string>
+    <string name="delete">Slett</string>
+    <string name="check_answer">Sjekk svar</string>
+    <string name="next">Neste</string>
+    <string name="your_answer">Ditt svar: </string>
+    <string name="task">Oppgave</string>
+    <string name="score">Poeng: </string>
+
+    <string name="feedback_finished_prefix">Ferdig! Du fikk</string>
+    <string name="feedback_finished_suffix">av</string>
+    <string name="feedback_correct">Riktig! Godt jobbet.</string>
+    <string name="feedback_wrong_prefix">Nesten! Riktig svar er</string>
 </resources>

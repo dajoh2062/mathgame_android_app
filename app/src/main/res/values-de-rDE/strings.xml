@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">dajoh2062_oblig1</string>
+    <string name="app_name">Mathe-Spiel</string>
     <string name="about">Um</string>
     <string name="preferences">Präferenzen</string>
     <string name="start">Start</string>
@@ -9,4 +9,22 @@
     <string name="about_header">Über die Anwendung</string>
     <string name="about_text">bla bla bla</string>
     <string name="go_back_start">← Zurück nach oben</string>
+
+    <string name="quit_dialog_title">Spiel beenden?</string>
+    <string name="quit_dialog_text">Wenn du jetzt beendest, verlierst du den Fortschritt in dieser Runde.</string>
+    <string name="quit">Beenden</string>
+    <string name="continue_playing">Weiterspielen</string>
+    <string name="play_again">Nochmal spielen</string>
+    <string name="to_menu">Zum Menü</string>
+    <string name="delete">Löschen</string>
+    <string name="check_answer">Antwort überprüfen</string>
+    <string name="next">Weiter</string>
+    <string name="your_answer">Deine Antwort: </string>
+    <string name="task">Aufgabe</string>
+    <string name="score">Punkte: </string>
+
+    <string name="feedback_finished_prefix">Fertig! Du hast</string>
+    <string name="feedback_finished_suffix">von</string>
+    <string name="feedback_correct">Richtig! Gut gemacht.</string>
+    <string name="feedback_wrong_prefix">Fast! Die richtige Antwort ist</string>
 </resources>

@@ -9,15 +9,15 @@ import kotlinx.coroutines.flow.StateFlow
 
 class GameViewModel(app: Application) : AndroidViewModel(app) {
 
-    // Moved the state inside the ViewModel
     data class UiState(
         val questionText: String = "",
         val questionNumber: Int = 0,
         val totalQuestions: Int = 0,
         val score: Int = 0,
-        val feedback: String? = null,
         val answered: Boolean = false,
         val finished: Boolean = false,
+        val correctAnswer: Int? = null,
+        val isAnswerCorrect: Boolean? = null,
         val showQuitDialog: Boolean = false,
         val currentInput: String = ""
     )
@@ -42,10 +42,10 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         idx = 0
         _score = 0
         input = ""
-        pushState(feedback = null, answered = false)
+        pushState(answered = false)
     }
 
-    private fun pushState(feedback: String?, answered: Boolean) {
+    private fun pushState(answered: Boolean) {
         val finished = idx >= order.size
         if (finished) {
             _ui.value = UiState(
@@ -53,7 +53,6 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
                 questionNumber = order.size,
                 totalQuestions = order.size,
                 score = _score,
-                feedback = "Ferdig! Du fikk $_score av ${order.size}.",
                 answered = true,
                 finished = true,
                 showQuitDialog = false,
@@ -68,7 +67,6 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
             questionNumber = idx + 1,
             totalQuestions = order.size,
             score = _score,
-            feedback = feedback,
             answered = answered,
             finished = false,
             showQuitDialog = false,
@@ -93,21 +91,21 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         if (_ui.value.finished || _ui.value.answered) return
         val given = input.toIntOrNull()
         val correct = answers[order[idx]]
-        val msg =
-            if (given != null && given == correct) {
-                _score += 1
-                "Riktig! Godt jobbet."
-            } else {
-                "Nesten! Riktig svar er $correct."
-            }
-        _ui.value = _ui.value.copy(feedback = msg, answered = true, score = _score)
+        val isCorrect = (given != null && given == correct)
+        if (isCorrect) _score++
+        _ui.value = _ui.value.copy(
+            answered = true,
+            score = _score,
+            isAnswerCorrect = isCorrect,
+            correctAnswer = correct
+        )
     }
 
     fun next() {
         if (_ui.value.finished) return
         idx += 1
         input = ""
-        pushState(feedback = null, answered = false)
+        pushState(answered = false)
     }
 
     fun askQuit() { _ui.value = _ui.value.copy(showQuitDialog = true) }

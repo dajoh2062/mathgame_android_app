@@ -12,23 +12,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
 @Composable
 fun AboutButton(
     navController: NavController,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
-    OutlinedButton(
-        onClick = {navController.navigate("about")},
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
+    Dajoh2062_oblig1Theme {
+        OutlinedButton(
+            onClick = {navController.navigate("about")},
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
 
-        ) {
-        Text(
-            text = stringResource(id = R.string.about),
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
-        )
+            ) {
+            Text(
+                text = stringResource(id = R.string.about),
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
     }
-}
+}}

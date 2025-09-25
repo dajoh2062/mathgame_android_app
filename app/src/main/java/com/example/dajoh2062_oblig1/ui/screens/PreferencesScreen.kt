@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
@@ -56,27 +57,29 @@ private fun PreferencesScreenContent(
     onSave: () -> Unit,
     onCancel: () -> Unit
 ) {
-    Surface(modifier, color = MaterialTheme.colorScheme.background) {
-        Column(
-            modifier = Modifier.fillMaxSize().padding(24.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            PreferencesHeader()
-            Text(text = stringResource(id = R.string.prefs_count_label))
-            RadioListPreferences(
-                list = options,
-                selectedOption = selectedOption,
-                onSelectedChange = onSelect
-            )
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                SaveButton(onClick = onSave)
-                Spacer(Modifier.width(12.dp))
-                CancelButton(onClick = onCancel)
+    Dajoh2062_oblig1Theme {
+        Surface(modifier, color = MaterialTheme.colorScheme.background) {
+            Column(
+                modifier = Modifier.fillMaxSize().padding(24.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Spacer(modifier = Modifier.height(16.dp))
+                PreferencesHeader()
+                Text(text = stringResource(id = R.string.prefs_count_label))
+                RadioListPreferences(
+                    list = options,
+                    selectedOption = selectedOption,
+                    onSelectedChange = onSelect
+                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    SaveButton(onClick = onSave)
+                    Spacer(Modifier.width(12.dp))
+                    CancelButton(onClick = onCancel)
+                }
             }
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun PreferencesScreenPreview() {

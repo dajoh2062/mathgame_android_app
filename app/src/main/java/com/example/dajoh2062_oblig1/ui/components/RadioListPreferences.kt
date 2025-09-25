@@ -26,25 +26,26 @@ fun RadioListPreferences(
     selectedOption: Int,
     onSelectedChange: (Int) -> Unit
 ) {
-    Column(modifier = modifier.padding(16.dp)) {
-        list.forEach { n ->
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp)
-            ) {
-                RadioButton(
-                    selected = (n == selectedOption),
-                    onClick = { onSelectedChange(n) }
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(text = n.toString())
+    Dajoh2062_oblig1Theme {
+        Column(modifier = modifier.padding(16.dp)) {
+            list.forEach { n ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp)
+                ) {
+                    RadioButton(
+                        selected = (n == selectedOption),
+                        onClick = { onSelectedChange(n) }
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(text = n.toString())
+                }
             }
         }
     }
 }
-
 @Preview
 @Composable
 fun RadioListPreferencesPreview() {

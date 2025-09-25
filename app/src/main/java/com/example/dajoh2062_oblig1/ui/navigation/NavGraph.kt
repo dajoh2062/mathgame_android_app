@@ -14,7 +14,7 @@ import com.example.dajoh2062_oblig1.ui.screens.StartScreen
 
 
 @Composable
-fun MyApp(modifier: Modifier = Modifier){
+fun MyApp(){
     val navController = rememberNavController()
     NavigationGraph(navController = navController)
 }
