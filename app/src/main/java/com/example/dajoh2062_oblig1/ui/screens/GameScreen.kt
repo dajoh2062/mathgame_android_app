@@ -22,30 +22,34 @@ import com.example.dajoh2062_oblig1.R
 import com.example.dajoh2062_oblig1.viewmodel.GameViewModel
 import com.example.dajoh2062_oblig1.ui.components.NumberPad
 
+//  Skjermbildet som er selve spillet. Start ett nytt instans når brukeren trykker på "start" på
+// hjemskjermen. Funksjonen GameScreenContent er selve skjermbildet, mens GameScreen bare gir
+// riktige parametere og funkjsoner. Dette er gjor slik for at previewen skal fungere.
 @Composable
 fun GameScreen(
     navController: NavController,
     vm: GameViewModel = viewModel(),
     onExitToMenu: () -> Unit = {}
 ) {
+    // Observerer UI-tilstand fra ViewModel (reaktivt oppdatert)
     val uiState = vm.ui.collectAsState(initial = GameViewModel.UiState()).value
 
     GameScreenContent(
         ui = uiState,
-        onDigit = vm::onDigitPressed,
-        onSubmit = vm::onSubmitAnswer,
-        onClear = vm::clearInput,
-        onNext = vm::next,
-        onAskQuit = vm::askQuit,
-        onDismissQuit = vm::dismissQuit,
+        onDigit = vm::onDigitPressed,      // Når brukeren trykker et tall
+        onSubmit = vm::onSubmitAnswer,     // Når brukeren sender inn svaret
+        onClear = vm::clearInput,          // Sletter nåværende input
+        onNext = vm::next,                 // Går til neste oppgave
+        onAskQuit = vm::askQuit,           // Spør om spilleren vil avslutte
+        onDismissQuit = vm::dismissQuit,   // Avbryter "quit"-dialog
         onConfirmQuit = {
             vm.dismissQuit()
             navController.navigate("start") {
-                popUpTo(0)
-                launchSingleTop = true
+                popUpTo(0)                 // Tømmer backstack
+                launchSingleTop = true     // Unngår dupliserte skjermer
             }
         },
-        onStartNew = vm::startNewGame,
+        onStartNew = vm::startNewGame,     // Starter nytt spill
         onExitToMenu = {
             navController.navigate("start") {
                 popUpTo(0)
@@ -71,8 +75,10 @@ private fun GameScreenContent(
     Surface(
         color = MaterialTheme.colorScheme.background
     ) {
+        // Håndterer tilbakeknapp (Android) → viser "quit"-dialog hvis ikke ferdig
         BackHandler(enabled = !ui.finished && !ui.showQuitDialog) { onAskQuit() }
 
+        // Dialogboks når brukeren prøver å avslutte
         if (ui.showQuitDialog) {
             AlertDialog(
                 onDismissRequest = { onDismissQuit() },
@@ -96,11 +102,12 @@ private fun GameScreenContent(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(20.dp)
-                    .verticalScroll(rememberScrollState()),
+                    .verticalScroll(rememberScrollState()),  // Gjør innholdet scrollbart
                 horizontalAlignment = Alignment.CenterHorizontally
-
             ) {
                 Spacer(modifier = Modifier.height(48.dp))
+
+                // Viser oppgave-nummer og poengsum
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     Text(
                         stringResource(R.string.task) + " ${ui.questionNumber}/${ui.totalQuestions}",
@@ -114,6 +121,7 @@ private fun GameScreenContent(
 
                 Spacer(Modifier.height(32.dp))
 
+                // Ferdigskjerm med sluttresultat
                 if (ui.finished) {
                     Text(
                         text = stringResource(R.string.feedback_finished_prefix) +
@@ -131,7 +139,10 @@ private fun GameScreenContent(
                     }
                     return@Surface
                 }
+
                 Spacer(modifier = Modifier.height(24.dp))
+
+                // Viser oppgavetekst
                 Text(
                     text = ui.questionText,
                     style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
@@ -141,10 +152,12 @@ private fun GameScreenContent(
 
                 Spacer(Modifier.height(24.dp))
 
+                // Tallknappene (NumberPad)
                 NumberPad(enabled = !ui.answered, onClick = onDigit)
 
                 Spacer(Modifier.height(48.dp))
 
+                // Brukerens svar + knapper for slett og send inn
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -178,6 +191,7 @@ private fun GameScreenContent(
 
                 Spacer(Modifier.height(16.dp))
 
+                // Tilbakemelding på svaret (riktig/feil)
                 if (ui.answered && !ui.finished) {
                     val feedbackText = if (ui.isAnswerCorrect == true) {
                         stringResource(R.string.feedback_correct)
@@ -187,6 +201,8 @@ private fun GameScreenContent(
                     Text(feedbackText, style = MaterialTheme.typography.titleMedium)
                     Spacer(Modifier.height(8.dp))
                 }
+
+                // Nederste knapper: Avslutt og Neste
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     OutlinedButton(onClick = onAskQuit) {
                         Text(
@@ -206,7 +222,9 @@ private fun GameScreenContent(
     }
 }
 
+
 // Preview composable bare for å lettere utvikle skjermen.
+// Bruker bare eksempler for spørsmål, svar osv. Parameterene som er funskjoner er tomme.
 @Preview(showBackground = true)
 @Composable
 fun GameScreenPreview() {

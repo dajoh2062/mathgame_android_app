@@ -7,8 +7,12 @@ import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+// Viewmodel for skjermbildet GameScreen.kt.
+// Dette er for å separere funksjonalitet fra UI.
+// Bruker en MutableStateFlow for å oppdatere UI-tilstanden.
 class GameViewModel(app: Application) : AndroidViewModel(app) {
 
+    // Representerer alt UI trenger å vite
     data class UiState(
         val questionText: String = "",
         val questionNumber: Int = 0,
@@ -26,16 +30,18 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
     private val questions: Array<String> = app.resources.getStringArray(R.array.math_questions)
     private val answers: IntArray = app.resources.getIntArray(R.array.math_answers)
 
+    // Rekkefølge på oppgaver
     private var order: List<Int> = emptyList()
-    private var idx = 0
+    private var idx = 0         // Nåværende oppgave
     private var _score = 0
     private var input: String = ""
 
     private val _ui = MutableStateFlow(UiState())
-    val ui: StateFlow<UiState> = _ui
+    val ui: StateFlow<UiState> = _ui   // Eksponeres til UI
 
     init { startNewGame() }
 
+    // Starter nytt spill og lager tilfeldig rekkefølge
     fun startNewGame() {
         val wanted = prefs.getInt("numberOfTasks", 5).coerceIn(1, questions.size)
         order = (questions.indices).shuffled().take(wanted)
@@ -45,6 +51,7 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         pushState(answered = false)
     }
 
+    // Oppdaterer state basert på nåværende progresjon
     private fun pushState(answered: Boolean) {
         val finished = idx >= order.size
         if (finished) {
@@ -74,6 +81,7 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         )
     }
 
+    // Når bruker trykker et tall
     fun onDigitPressed(digit: Int) {
         if (_ui.value.finished || _ui.value.answered) return
         if (input.length >= 8) return
@@ -81,12 +89,14 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         _ui.value = _ui.value.copy(currentInput = input)
     }
 
+    // Nullstiller input
     fun clearInput() {
         if (_ui.value.finished || _ui.value.answered) return
         input = ""
         _ui.value = _ui.value.copy(currentInput = input)
     }
 
+    // Sjekker svaret mot fasit
     fun onSubmitAnswer() {
         if (_ui.value.finished || _ui.value.answered) return
         val given = input.toIntOrNull()
@@ -101,6 +111,7 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         )
     }
 
+    // Går videre til neste oppgave
     fun next() {
         if (_ui.value.finished) return
         idx += 1
@@ -108,6 +119,7 @@ class GameViewModel(app: Application) : AndroidViewModel(app) {
         pushState(answered = false)
     }
 
+    // Vise / skjule "quit"-dialog
     fun askQuit() { _ui.value = _ui.value.copy(showQuitDialog = true) }
     fun dismissQuit() { _ui.value = _ui.value.copy(showQuitDialog = false) }
 }
