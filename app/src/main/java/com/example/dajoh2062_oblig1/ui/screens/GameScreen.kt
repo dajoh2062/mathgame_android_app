@@ -25,6 +25,8 @@ import com.example.dajoh2062_oblig1.ui.components.NumberPad
 //  Skjermbildet som er selve spillet. Start ett nytt instans når brukeren trykker på "start" på
 // hjemskjermen. Funksjonen GameScreenContent er selve skjermbildet, mens GameScreen bare gir
 // riktige parametere og funkjsoner. Dette er gjor slik for at previewen skal fungere.
+// For enkelhetens skyld, så er mange de komponentene i dette skjermbildet beholdt i samme fil,
+// istedenfor å lage egne komponent filer slik som i de andre skjermbildene.
 @Composable
 fun GameScreen(
     navController: NavController,
