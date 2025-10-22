@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dajoh2062_oblig1.R
 
+//Overskrift til PreferenceScreen.kt. Det er lagt til padding under for å skape litt mellomrom.
 @Composable
 fun PreferencesHeader(modifier: Modifier = Modifier) {
     Text(

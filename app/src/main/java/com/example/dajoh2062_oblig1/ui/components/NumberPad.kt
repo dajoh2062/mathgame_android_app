@@ -9,6 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+//En komponent som gjenbruker NumBtn komponentet for å lage en numberpad.
+// Hver knapp representerer et tall og kaller en gitt funksjon ved klikk.
 @Composable
 fun NumberPad(
     enabled: Boolean,

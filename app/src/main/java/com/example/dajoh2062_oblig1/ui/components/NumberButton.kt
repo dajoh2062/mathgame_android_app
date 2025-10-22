@@ -9,6 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+// Komponent som viser en tallknapp i en Row, der tallet vises som tekst og en funksjon kalles ved klikk.
+// RowScope gjør at knappen bare kan brukes innenfor en Row{}
+
 @Composable
 fun RowScope.NumBtn(n: Int, enabled: Boolean, onClick: (Int) -> Unit) {
     Button(

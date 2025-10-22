@@ -7,6 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 
+//Knapp som brukes for å navigere tilbake til startskjermen i about-skjermen. Brukeren kan også bruke tilbakepilen
+// på telefonen for å navigere til start.
 @Composable
 fun BackToStartButton(navController: NavController) {
         Button(onClick = { navController.navigate("start") }) {

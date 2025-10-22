@@ -13,6 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+
+// En komponent som bruker for-liste for å lage radioKnapper til hver av de forskjellige verdiene,
+// som tilfellet vårt blir 5, 10 og 15 i preferencesScreen.kt.
 @Composable
 fun RadioListPreferences(
     modifier: Modifier = Modifier,
@@ -20,7 +23,9 @@ fun RadioListPreferences(
     selectedOption: Int,
     onSelectedChange: (Int) -> Unit
 ) {
+        // kolonne for å plassere radioknapper i hver rad.
         Column(modifier = modifier.padding(16.dp)) {
+            // Listen er gitt når man lager ett instans av komponenten.
             list.forEach { n ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

@@ -34,16 +34,19 @@ import com.example.dajoh2062_oblig1.viewmodel.PreferencesViewModel
 @Composable
 fun PreferencesScreen(navController: NavController, modifier: Modifier = Modifier) {
     val vm: PreferencesViewModel = viewModel()
+    // Husker valgt preferanse selv etter rotasjon
     var selected by rememberSaveable { mutableIntStateOf(vm.getCountPreference()) }
 
     PreferencesScreenContent(
         modifier = modifier,
-        options = vm.options,
-        selectedOption = selected,
-        onSelect = { selected = it },
-        onSave = { vm.setCountPreference(selected)
-                    navController.navigate("start") },
-        onCancel = { navController.navigate("start") }
+        options = vm.options,                  // Liste med valg (antall)
+        selectedOption = selected,             // Nåværende valgt
+        onSelect = { selected = it },          // Når brukeren velger nytt
+        onSave = {                             // Lagre og gå tilbake til start
+            vm.setCountPreference(selected)
+            navController.navigate("start")
+        },
+        onCancel = { navController.navigate("start") }  // Avbryt uten å lagre
     )
 }
 
@@ -56,23 +59,26 @@ private fun PreferencesScreenContent(
     onSave: () -> Unit,
     onCancel: () -> Unit
 ) {
-
     Surface(
         modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
         Column(
             modifier = Modifier.fillMaxSize().padding(24.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp) // Avstand mellom elementer
         ) {
             Spacer(modifier = Modifier.height(16.dp))
-            PreferencesHeader()
-            Text(text = stringResource(id = R.string.prefs_count_label))
+            PreferencesHeader() // Overskrift/ikon for innstillinger
+            Text(text = stringResource(id = R.string.prefs_count_label)) // "Antall oppgaver" tekst
+
+            // Radioknapper for å velge preferanse
             RadioListPreferences(
                 list = options,
                 selectedOption = selectedOption,
                 onSelectedChange = onSelect
             )
+
+            // Knapper for lagre/avbryt
             Row(verticalAlignment = Alignment.CenterVertically) {
                 SaveButton(onClick = onSave)
                 Spacer(Modifier.width(12.dp))
@@ -86,6 +92,7 @@ private fun PreferencesScreenContent(
 @Composable
 fun PreferencesScreenPreview() {
     Dajoh2062_oblig1Theme {
+        // Forhåndsvisning: start med valgt = 10
         var selected by rememberSaveable { mutableIntStateOf(10) }
         PreferencesScreenContent(
             options = listOf(5, 10, 15),

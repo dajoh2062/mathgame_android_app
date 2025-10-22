@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
+//Knapp til startskjermen får å gå inn på "about" skjermen. Bruker outlined button istenden
+// for vanlig button for å skille ifra hoved-funksjonene i appen. Bruker stringresource.
 @Composable
 fun AboutButton(
     navController: NavController,

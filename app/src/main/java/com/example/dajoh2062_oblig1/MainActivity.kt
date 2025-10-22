@@ -5,16 +5,11 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.dajoh2062_oblig1.ui.navigation.MyApp
 import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
+// MainActivity.kt som start MyApp(), som ligger i NavGraph.kt.
+// Der startes start-skjermbildet.
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

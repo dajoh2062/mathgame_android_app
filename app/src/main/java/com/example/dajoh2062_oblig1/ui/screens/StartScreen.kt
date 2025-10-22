@@ -20,6 +20,9 @@ import com.example.dajoh2062_oblig1.ui.components.StartButton
 import com.example.dajoh2062_oblig1.ui.components.MainHeader
 import com.example.dajoh2062_oblig1.ui.theme.Dajoh2062_oblig1Theme
 
+
+// Start -skjermbildet. Bruker 4 av de komponentene i components mappen; MainHeader, StartButton,
+// PreferencesButton og AboutButton. Tar inn navController og modifier som parametre.
 @Composable
 fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
     Surface(
@@ -27,10 +30,12 @@ fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
         color = MaterialTheme.colorScheme.background
     ) {
             Column(
+                // kolonnenen fyller hele skjermen så mye som mulig og midtstilles.
                 modifier = modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // Legger til noen mellomrom mellom hver komponent.
                 Spacer(modifier = Modifier.height(16.dp))
                 MainHeader()
                 Spacer(modifier = Modifier.height(16.dp))
@@ -43,6 +48,7 @@ fun StartScreen(navController: NavController, modifier: Modifier = Modifier) {
         }
     }
 
+// Preview composable bare for å lettere utvikle skjermen.
 @Preview(showBackground = true)
 @Composable
 fun StartScreenPreview(){

@@ -13,7 +13,8 @@
     gode kontraster slik at applikasjonen oppleves så fin og brukervennlig som mulig. Applikasjon støtter språkene
     Norsk bokmål, Tysk og Engelsk. </string>
     <string name="go_back_start">←Tilbake til start</string>
-
+    <string name="quit_pref">Avbryt</string>
+    <string name="save_pref">Lagre</string>
     <string name="quit_dialog_title">Avslutt spillet?</string>
     <string name="quit_dialog_text">Hvis du avslutter nå, mister du fremgangen i denne runden.</string>
     <string name="quit">Avslutt</string>
@@ -26,7 +27,6 @@
     <string name="your_answer">Ditt svar: </string>
     <string name="task">Oppgave</string>
     <string name="score">Poeng: </string>
-
     <string name="feedback_finished_prefix">Ferdig! Du fikk</string>
     <string name="feedback_finished_suffix">av</string>
     <string name="feedback_correct">Riktig! Godt jobbet.</string>

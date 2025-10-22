@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.dajoh2062_oblig1.R
 
+// Knapp for å navigere til PreferencesScreen.kt. Enkel knapp med bold tekst. Knappen dekker hele
+// bredden med unntak av litt padding.
 @Composable
 fun PreferencesButton(navController: NavController, modifier: Modifier = Modifier) {
     Button(

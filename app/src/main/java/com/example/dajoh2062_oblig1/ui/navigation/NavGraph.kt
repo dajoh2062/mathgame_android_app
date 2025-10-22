@@ -11,6 +11,8 @@ import com.example.dajoh2062_oblig1.ui.screens.PreferencesScreen
 
 import com.example.dajoh2062_oblig1.ui.screens.StartScreen
 
+// Navigasjonsgraf for applikasjonen. Inneholder alle skjermbildene og rutene deres.
+// Bruker NavHostController til å navigere mellom skjermbildene, som vist i canvas materialet.
 
 @Composable
 fun MyApp(){
@@ -20,8 +22,11 @@ fun MyApp(){
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
+    // Første siden er start-skjermen.
     NavHost(navController = navController, startDestination = "start")
     {
+
+        // Navigasjonsruter til de fire skjermene i prosjektet.
         composable("start") {
             StartScreen(navController = navController)
         }
